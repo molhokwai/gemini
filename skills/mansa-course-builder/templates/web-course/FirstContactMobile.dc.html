@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Premier contact avec l'IA, mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Work Sans',system-ui,sans-serif;color:#131313;background:#ffffff}
+a{color:#007a5e}a:hover{color:#005a45}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: #ffffff; font-family: 'Work Sans', system-ui, sans-serif; color: #131313;">
+
+  <div style="display: flex; height: 5px; flex-shrink: 0;">
+    <div style="flex-grow: 1; background: #007a5e;"></div>
+    <div style="flex-grow: 1; background: #fcd116;"></div>
+    <div style="flex-grow: 1; background: #c81e3a;"></div>
+  </div>
+
+  <section aria-label="Guide MANSA" style="position: relative; height: 276px; flex-shrink: 0; box-sizing: border-box; background: #f4f4f1; border-bottom: 1px solid #dedcd4;">
+    <div style="height: 100%; box-sizing: border-box; padding: 16px 20px; overflow: auto; display: flex; flex-direction: column; gap: 12px; opacity: {{guideOpacity}}; transition: opacity 450ms ease;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #4a4a46;">COURS 1 · PREMIER CONTACT</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a4a46;">{{progressLabel}}</span>
+      </div>
+      <h1 style="margin: 0; font-family: 'Archivo Black', 'Arial Black', sans-serif; font-weight: 400; font-size: 24px; line-height: 1.1;">Premier contact avec l'IA</h1>
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; font-style: italic; color: #3a3a36;">Tapez ou copiez la question, appuyez sur « Envoyer › », lisez la réponse et prenez le temps de la comprendre, puis passez à la suivante.</p>
+
+      <sc-if value="{{hasOurs}}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 3px; background: #e3f3ee;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #005a45;">LA RÉPONSE MANSA · QUESTION {{oursNumber}}</span>
+          <span style="font-size: 14px; line-height: 1.55;">{{oursText}}</span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{hasNext}}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 3px; background: #ffffff; border: 1px solid #dedcd4;">
+          <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a4a46;">QUESTION {{nextNumber}} / 8</span>
+            <span style="font-size: 15px; font-weight: 600; line-height: 1.35; white-space: pre-line;">{{nextText}}</span>
+          </div>
+          <button type="button" onClick="{{useNext}}" aria-label="Mettre la question dans la discussion" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex-shrink: 0; border: 1px solid #131313; border-radius: 3px; background: #ffffff; color: #131313; cursor: pointer;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M4 16V6a2 2 0 0 1 2-2h10"></path></svg>
+          </button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{allAsked}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 3px; background: #131313; color: #ffffff;">
+          <span style="font-size: 16px; font-weight: 600;">Êtes-vous à l'aise avec l'IA, ou commencez-vous à l'être ?</span>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" onClick="{{keepAsking}}" style="flex-grow: 1; height: 44px; border: 1px solid #6b6a62; border-radius: 3px; background: transparent; color: #ffffff; font: inherit; font-size: 14px;">Pas encore</button>
+            <a href="Main.dc.html" style="flex-grow: 1; display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 3px; background: #fcd116; color: #131313; text-decoration: none; font-weight: 600; font-size: 14px;">Oui — commencer</a>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{faded}}" hint-placeholder-val="{{ true }}">
+      <button type="button" onClick="{{showGuide}}" aria-label="Afficher le guide" style="position: absolute; inset: 0; border: 0; background: transparent; cursor: pointer;"></button>
+    </sc-if>
+  </section>
+
+  <section aria-label="Discussion avec l'IA" style="flex-grow: 1; min-height: 0; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 8px; height: 40px; flex-shrink: 0; padding: 0 16px; border-bottom: 1px solid #dedcd4; font-size: 14px;">
+      <span style="font-weight: 600;">Discussion avec l'IA</span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a4a46;">Claude</span>
+    </div>
+    <div style="flex-grow: 1; min-height: 0; overflow: auto; display: flex; flex-direction: column-reverse; padding: 14px 16px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 60px 12px 20px; text-align: center; font-size: 14px; line-height: 1.55; color: #4a4a46;">Votre première question vous attend en haut. Mettez-la dans la discussion, ou tapez-la vous-même.</div>
+        </sc-if>
+        <sc-for list="{{messages}}" as="m" hint-placeholder-count="4">
+          <div style="align-self: {{m.align}}; max-width: 290px; padding: 10px 13px; border-radius: 12px; background: {{m.bg}}; color: {{m.fg}}; font-style: {{m.fs}}; font-size: 15px; line-height: 1.5; white-space: pre-line;">{{m.text}}</div>
+        </sc-for>
+        <sc-if value="{{showNextChip}}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{useNext}}" style="align-self: flex-start; height: 40px; padding: 0 14px; border: 1px dashed #007a5e; border-radius: 20px; background: #ffffff; color: #005a45; font: inherit; font-size: 14px; font-weight: 500;">Suivante : question {{nextNumber}} / 8 ›</button>
+        </sc-if>
+      </div>
+    </div>
+    <form onSubmit="{{send}}" style="flex-shrink: 0; display: flex; gap: 8px; align-items: flex-end; padding: 10px 12px 22px; border-top: 1px solid #dedcd4;">
+      <label for="ibm-input" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Votre message à l'IA</label>
+      <textarea id="ibm-input" rows="1" value="{{draft}}" onChange="{{onDraft}}" onFocus="{{hideGuide}}" placeholder="Tapez ou collez votre question…" style="flex-grow: 1; box-sizing: border-box; min-height: 48px; padding: 12px; border: 1px solid #b9b7ad; border-radius: 6px; font: inherit; font-size: 16px; line-height: 1.4; resize: none;"></textarea>
+      <button type="submit" disabled="{{cannotSend}}" style="height: 48px; padding: 0 14px; border: 0; border-radius: 6px; background: {{sendBg}}; color: #ffffff; font: inherit; font-size: 15px; font-weight: 600;">Envoyer ›</button>
+    </form>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"demoState":{"editor":"enum","options":["Not started","In progress","All 8 asked"],"default":"In progress"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  questions() {
+    return [
+      { q: 'Bonjour,\nes-tu humain ?', ours: null },
+      { q: 'Comment se fait-il que tu puisses répondre comme un humain ?', ours: 'Une IA comme celle-ci est un modèle de langage. Elle a été entraînée sur une énorme quantité de textes écrits par des humains, et en a appris la manière dont nous écrivons et raisonnons. Quand vous lui posez une question, elle construit sa réponse mot après mot à partir de ces modèles : c’est pour cela qu’elle semble humaine. Ce n’est pas une personne, elle ne vit pas en dehors de cette conversation, et elle peut se tromper : vérifiez toujours ce qui compte.' },
+      { q: 'Vas-tu me remplacer, nous remplacer, à l’avenir ?', ours: '[La vision de MANSA — à rédiger]' },
+      { q: 'Quel est le pire scénario pour moi, pour nous — et quelle est sa probabilité ?', ours: '[La réponse de MANSA — à rédiger]' },
+      { q: 'Comment savoir si tu es bienveillante ?', ours: 'Claude, l’IA de ce cours, est conçue pour être bienveillante grâce à sa Constitution : le document fondateur qui pose les règles éthiques et humaines sur lesquelles elle est entraînée. D’autres IA n’ont pas forcément un tel fondement.' },
+      { q: 'Ai-je besoin de toi ? Et si oui, pourquoi ?', ours: null },
+      { q: 'Comment peux-tu m’aider ?', ours: 'Tout dépend de ce que vous voulez faire — et surtout, de savoir exactement ce que vous voulez faire. Dans ce cas, l’IA devient le meilleur assistant-machine que vous puissiez avoir.' },
+      { q: 'Comment vais-je travailler avec toi ?', ours: '[Le parcours que vous suivrez avec MANSA, et un exemple réel de la façon dont votre journée de travail change — à rédiger]' }
+    ];
+  }
+  seed(demo) {
+    const qs = this.questions();
+    const n = demo === 'Not started' ? 0 : (demo === 'All 8 asked' ? 8 : 2);
+    const messages = [];
+    for (let i = 0; i < n; i++) {
+      messages.push({ role: 'user', text: qs[i].q });
+      messages.push({ role: 'ai', text: '[La réponse en direct de l’IA s’affiche ici]' });
+    }
+    return { asked: n, messages: messages, draft: '', guide: false, demo: demo };
+  }
+  constructor(props) {
+    super(props);
+    this.state = this.seed(props.demoState ?? 'In progress');
+  }
+  componentDidUpdate() {
+    const demo = this.props.demoState ?? 'In progress';
+    if (demo !== this.state.demo) this.setState(this.seed(demo));
+  }
+  renderVals() {
+    const qs = this.questions();
+    const s = this.state;
+    const started = s.messages.length > 0;
+    const last = s.asked > 0 ? qs[s.asked - 1] : null;
+    const next = s.asked < 8 ? qs[s.asked] : null;
+    const faded = started && !s.guide;
+    const doSend = () => {
+      const text = (s.draft || '').trim();
+      if (!text) return;
+      const matches = next && text === next.q.trim();
+      this.setState({
+        messages: s.messages.concat([{ role: 'user', text: text }, { role: 'ai', text: '[La réponse en direct de l’IA s’affiche ici]' }]),
+        asked: matches ? s.asked + 1 : s.asked,
+        draft: '',
+        guide: false
+      });
+    };
+    return {
+      guideOpacity: faded ? '0.28' : '1',
+      faded: faded,
+      showGuide: () => this.setState({ guide: true }),
+      hideGuide: () => { if (s.guide) this.setState({ guide: false }); },
+      hasOurs: !!(last && last.ours),
+      oursNumber: s.asked,
+      oursText: last && last.ours ? last.ours : '',
+      hasNext: !!next,
+      nextNumber: s.asked + 1,
+      nextText: next ? next.q : '',
+      useNext: () => { if (next) this.setState({ draft: next.q, guide: false }); },
+      allAsked: s.asked >= 8,
+      keepAsking: () => this.setState({ guide: false }),
+      progressLabel: Math.min(s.asked, 8) + ' / 8',
+      empty: !started,
+      messages: s.messages.map((m) => m.role === 'user'
+        ? { text: m.text, align: 'flex-end', bg: '#131313', fg: '#ffffff', fs: 'normal' }
+        : { text: m.text, align: 'flex-start', bg: '#f4f4f1', fg: '#4a4a46', fs: 'italic' }),
+      showNextChip: started && !!next,
+      draft: s.draft,
+      onDraft: (e) => this.setState({ draft: e.target.value }),
+      send: (e) => { e.preventDefault(); doSend(); },
+      cannotSend: !(s.draft || '').trim(),
+      sendBg: (s.draft || '').trim() ? '#007a5e' : '#8a897f'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# workbook key (used by [sheet].workbook in a spec) -> spreadsheet id. Ids live here, never in a spec.
+[workbooks]
+registre-financier = "1_0FPWIfXnybS2C4B0BM0E05_zXniLqjFL9DU06au-PE"   # "Registre Financier — life/"
+
+[paths]
+repo = "/media/nkensa/win11/Users/Nkensa/GDrive-local/Tree/Workspaces/2/emelit/src/dev/projects/nkensa"   # repo root: life/<domain>/apps-script/, runbooks, life log

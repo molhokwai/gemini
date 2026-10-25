@@ -1,0 +1,66 @@
+# Example 2/3 — an EXISTING sheet fed through an Apps Script trigger (import-trigger pattern), adopted.
+# Real pieces today: profiles/jm_livraison.py, life/50-work/52-jm/55-jm-livraisons-import.gs, AppSheet view "Import Livraisons+Collecte JM".
+spec_version = 1
+
+# Column list as an inline array: it must come BEFORE the first [table] (TOML would otherwise attach it to that table).
+# Equivalent spelling: one [[columns]] block per column.
+columns = [
+  { key = "date", header = "Date", type = "date", required = true },
+  { key = "nr", header = "Nr", type = "integer", llm = "NEVER declared: resolved by the trigger from Nom via the reference tab" },
+  { key = "name", header = "Nom", type = "text", required = true, aliases = ["Nom du point"] },
+  { key = "delivered", header = "Livré", type = "number", min = 0, aliases = ["livrées"] },
+  { key = "sold", header = "Vendu", type = "number", min = 0 },
+  { key = "collected", header = "Collecté", type = "number", min = 0 },
+  { key = "balance", header = "Solde", type = "number" },
+  { key = "notes", header = "Notes", type = "longtext" },
+]
+
+[sheet]
+id          = "jm-livraison"
+title       = "Dépôt / vente"
+description = "JM cake/ice-cream deliveries, sales and collections at a point (one row per point and day)"
+language    = "fr"
+workbook    = "registre-financier"
+mode        = "adopt"
+layout      = "table"
+frozen_rows = 1
+# Columns to the right of the declared ones (e.g. the helper "Total" cells) are tolerated by --verify and reported as info.
+
+[[reference]]
+tab        = "Points de dépôt / vente"
+key_column = "Nom"
+used_by    = ["name"]          # a miss is a non-blocking warning, the row is still added
+
+[intake]
+pattern = "import-trigger"
+[intake.import]
+tab           = "Import"
+import_columns = ["Horodatage", "Texte", "Statut", "Résultat"]
+date_blocks   = true                                   # "## 1 sept 2026" blocks
+dsl_columns   = ["name", "delivered", "sold", "collected", "balance", "notes"]   # NOT nr (resolved by the trigger)
+dsl_extra_columns = [{ name = "Lieu", note = "accepted in the DSL and matched for the point, but not stored in this tab (today it triggers a 'colonne lieu absente' warning on every import — a known wart)" }]
+default_rules = []
+
+[channels]
+skill    = true
+appsheet = true
+
+[skill]
+name     = "freetext-to-jm-livraison-collecte"
+triggers = ["j'ai livré", "collecte chez", "log this delivery", "enregistre cette livraison JM"]
+not_for  = "JM's own money transactions (use freetext-to-registre)"
+judgment = ["Never invent a point name, quantity or date", "Pass an ambiguous point name through as written: the trigger's soft matching flags it"]
+
+[life]
+domain    = "50-work/52-jm"
+open_loop = "none"
+
+[appsheet]
+mode  = "runbook"
+app   = "Registre Financier — life/"     # extend the existing app, never create a second one
+views = ["form"]
+
+[safety]
+never_invent         = true
+scratch_test         = true
+keep_existing_layout = true

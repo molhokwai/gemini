@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Module 2 overview</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Work+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Work Sans',system-ui,sans-serif;color:#131313;background:#f4f4f1}
+a{color:#007a5e}a:hover{color:#005a45}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1720px; box-sizing: border-box; background: #f4f4f1; display: flex; flex-direction: column; font-family: 'Work Sans', system-ui, sans-serif; color: #131313;">
+
+  <div style="display: flex; height: 6px;">
+    <div style="flex-grow: 1; background: #007a5e;"></div>
+    <div style="flex-grow: 1; background: #fcd116;"></div>
+    <div style="flex-grow: 1; background: #c81e3a;"></div>
+  </div>
+
+  <header style="display: flex; align-items: center; gap: 32px; height: 76px; padding: 0 64px; background: #ffffff; border-bottom: 1px solid #dedcd4;">
+    <img src="/_blob/c546a0db0050bc12539158f796628a9c" alt="MANSA" style="height: 54px; width: 170px; object-fit: cover;">
+    <nav style="display: flex; gap: 28px; flex-grow: 1; font-size: 15px; font-weight: 500;">
+      <a href="#modules" style="color: #131313; text-decoration: none;">Course 1</a>
+      <a href="#modules" style="color: #4a4a46; text-decoration: none;">Modules</a>
+      <a href="#resources" style="color: #4a4a46; text-decoration: none;">Resources</a>
+      <a href="#community" style="color: #4a4a46; text-decoration: none;">Community</a>
+    </nav>
+    <div style="display: flex; border: 1px solid #dedcd4; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
+      <button type="button" style="height: 44px; padding: 0 14px; border: 0; background: #ffffff; color: #4a4a46; font: inherit; cursor: pointer;">FR</button>
+      <button type="button" aria-pressed="true" style="height: 44px; padding: 0 14px; border: 0; background: #131313; color: #ffffff; font: inherit; cursor: pointer;">EN</button>
+    </div>
+    <a href="#account" style="display: flex; align-items: center; justify-content: center; height: 44px; padding: 0 18px; border-radius: 3px; background: #131313; color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 600;">My progress</a>
+  </header>
+
+  <section style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; padding: 64px 64px 56px; background: #ffffff; border-bottom: 1px solid #dedcd4;">
+    <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 22px; padding-top: 12px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #4a4a46;">Course 1 · Module 02 of 05</div>
+      <h1 style="margin: 0; font-family: 'Archivo Black', 'Arial Black', sans-serif; font-weight: 400; font-size: 56px; line-height: 1.05; letter-spacing: -0.01em;">The three AI schemas</h1>
+      <p style="margin: 0; font-size: 19px; line-height: 1.55; color: #4a4a46; max-width: 480px;">Where things live, how a change moves through the system, and how the system improves itself. Every AI tool setup that scales past one prompt in a chat window needs all three.</p>
+      <div style="display: flex; gap: 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4a4a46;">
+        <span>3 lessons</span><span>·</span><span>1 checkpoint</span><span>·</span><span>[DURATION]</span>
+      </div>
+      <div style="display: flex; gap: 12px; padding-top: 8px;">
+        <a href="Lesson.dc.html" style="display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 3px; background: #007a5e; color: #ffffff; text-decoration: none; font-weight: 600; font-size: 16px;">
+          Continue · Lesson 2.2
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#pdf" style="display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 20px; border-radius: 3px; border: 1px solid #131313; color: #131313; text-decoration: none; font-weight: 500; font-size: 15px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>
+          Module PDF · low data
+        </a>
+      </div>
+    </div>
+    <div style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 12px;">
+      <div style="position: relative; border-radius: 6px; overflow: hidden; background: #0f1113; box-shadow: 0 1px 2px rgba(20,20,15,.06), 0 24px 48px -16px rgba(20,20,15,.35);">
+        <video src="/_blob/f41bd6490c19699c4466082e9524cca9" poster="/_blob/55f63bd20be203b72807453f24974d47" controls="{{yes}}" preload="none" playsInline="{{yes}}" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0f1113;"></video>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a4a46;">
+        <span>Module trailer · 0:10</span>
+        <span>Subtitles FR / EN</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; padding: 56px 64px 24px;">
+    <div style="grid-column: span 12; display: flex; align-items: baseline; justify-content: space-between;">
+      <h2 style="margin: 0; font-family: 'Archivo Black', 'Arial Black', sans-serif; font-weight: 400; font-size: 28px;">What you will be able to do</h2>
+    </div>
+    <div style="grid-column: span 12; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-top: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; background: #ffffff; border: 1px solid #dedcd4; border-radius: 3px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #007a5e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #007a5e;">TREE</span></div>
+        <div style="font-size: 18px; font-weight: 600; line-height: 1.35;">Separate a project's behavior, decisions and code into three places</div>
+        <div style="font-size: 15px; line-height: 1.55; color: #4a4a46;">.claude/skills, pm/tasks and src — and know why each changes at a different speed.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; background: #ffffff; border: 1px solid #dedcd4; border-radius: 3px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #fcd116; box-shadow: inset 0 0 0 1px #b8860a;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #7a5a06;">WORKFLOW</span></div>
+        <div style="font-size: 18px; font-weight: 600; line-height: 1.35;">Move one change through Init → Plan → Validate → Implement → Ship</div>
+        <div style="font-size: 15px; line-height: 1.55; color: #4a4a46;">Instead of an unstructured chat session — so nothing gets skipped under time pressure.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; background: #ffffff; border: 1px solid #dedcd4; border-radius: 3px;">
+        <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #c81e3a;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #c81e3a;">CYCLE</span></div>
+        <div style="font-size: 18px; font-weight: 600; line-height: 1.35;">Keep your AI skills in sync with the real codebase</div>
+        <div style="font-size: 15px; line-height: 1.55; color: #4a4a46;">Doing, detecting, updating — the loop that stops "the AI knows how we work" going stale.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modules" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; padding: 40px 64px 64px;">
+    <div style="grid-column: span 8; display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <h2 style="margin: 0; font-family: 'Archivo Black', 'Arial Black', sans-serif; font-weight: 400; font-size: 28px;">Lessons</h2>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4a4a46;">1 of 4 done</span>
+      </div>
+      <div style="height: 6px; border-radius: 3px; background: #dedcd4; overflow: hidden;"><div style="width: 25%; height: 6px; background: #007a5e;"></div></div>
+
+      <a href="#lesson-2-1" style="display: flex; gap: 20px; align-items: center; padding: 16px; background: #ffffff; border: 1px solid #dedcd4; border-radius: 3px; text-decoration: none; color: #131313;">
+        <img src="/_blob/55f63bd20be203b72807453f24974d47" alt="Tree schema animation still" style="width: 176px; height: 99px; object-fit: cover; border-radius: 3px; background: #0f1113;">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a4a46;">LESSON 2.1</div>
+          <div style="font-size: 20px; font-weight: 600;">The Tree structure schema</div>
+          <div style="font-size: 15px; color: #4a4a46;">Where does a project keep its brain vs. its code vs. its decisions?</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 16px; background: #e3f3ee; color: #005a45; font-size: 13px; font-weight: 600;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+          Done
+        </div>
+      </a>
+
+      <a href="Lesson.dc.html" style="display: flex; gap: 20px; align-items: center; padding: 16px; background: #ffffff; border: 2px solid #131313; border-radius: 3px; text-decoration: none; color: #131313;">
+        <img src="/_blob/eb4fb1c6b227d39aeda0a798fec439a2" alt="Workflow schema animation still" style="width: 176px; height: 99px; object-fit: cover; border-radius: 3px; background: #0f1113;">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a4a46;">LESSON 2.2</div>
+          <div style="font-size: 20px; font-weight: 600;">The Workflow schema</div>
+          <div style="font-size: 15px; color: #4a4a46;">How a single feature or fix moves through a repeatable pipeline.</div>
+        </div>
+        <div style="display: flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 16px; background: #fcd116; color: #131313; font-size: 13px; font-weight: 600;">In progress</div>
+      </a>
+
+      <a href="#lesson-2-3" style="display: flex; gap: 20px; align-items: center; padding: 16px; background: #ffffff; border: 1px solid #dedcd4; border-radius: 3px; text-decoration: none; color: #131313;">
+        <img src="/_blob/df125376206eae99dc4b433f311fbf74" alt="Cycle schema animation still" style="width: 176px; height: 99px; object-fit: cover; border-radius: 3px; background: #0f1113;">
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #4a4a46;">LESSON 2.3</div>
+          <div style="font-size: 20px; font-weight: 600;">The cyclical process</div>
+          <div style="font-size: 15px; color: #4a4a46;">How the system improves itself across tasks.</div>
+        </div>
+        <div style="display: flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 16px; background: #f4f4f1; color: #4a4a46; font-size: 13px; font-weight: 500;">Not started</div>
+      </a>
+
+      <a href="Checkpoint.dc.html" style="display: flex; gap: 20px; align-items: center; padding: 16px 16px 16px 24px; background: #131313; border-radius: 3px; text-decoration: none; color: #ffffff;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fcd116" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"></path><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"></path></svg>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b7b6ad;">CHECKPOINT</div>
+          <div style="font-size: 20px; font-weight: 600;">Three questions, one per schema</div>
+        </div>
+        <span style="font-size: 14px; color: #b7b6ad;">Unlocks Module 03</span>
+      </a>
+    </div>
+
+    <aside style="grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 16px; padding-top: 52px;">
+      <div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; background: #ffffff; border: 1px solid #dedcd4; border-radius: 3px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a4a46;">Course 1 outline</div>
+        <a href="FirstContact.dc.html" style="display: flex; gap: 12px; font-size: 15px; color: #4a4a46; text-decoration: none;"><span style="font-family: 'JetBrains Mono', monospace; color: #007a5e;">&#9656;</span><span>First contact with the AI</span></a>
+        <div style="display: flex; gap: 12px; font-size: 15px; color: #4a4a46;"><span style="font-family: 'JetBrains Mono', monospace; color: #007a5e;">00</span><span>Primer — converse, don't just prompt</span></div>
+        <div style="display: flex; gap: 12px; font-size: 15px; color: #4a4a46;"><span style="font-family: 'JetBrains Mono', monospace; color: #007a5e;">01</span><span>Environment setup</span></div>
+        <div style="display: flex; gap: 12px; font-size: 15px; font-weight: 600; color: #131313;"><span style="font-family: 'JetBrains Mono', monospace;">02</span><span>The three AI schemas</span></div>
+        <div style="display: flex; gap: 12px; font-size: 15px; color: #4a4a46;"><span style="font-family: 'JetBrains Mono', monospace;">03</span><span>Demo app — live build</span></div>
+        <div style="display: flex; gap: 12px; font-size: 15px; color: #4a4a46;"><span style="font-family: 'JetBrains Mono', monospace;">04</span><span>Homework &amp; closing project</span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; background: #faf1dc; border-radius: 3px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b4f05;">Live example</div>
+        <div style="font-size: 15px; line-height: 1.55; color: #131313;">These schemas are not slides: the repo that built this course uses the exact same tree, workflow and cycle. You will open it in Lesson 2.1.</div>
+      </div>
+    </aside>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { yes: true };
+  }
+}
+</script>
+</body>
+</html>

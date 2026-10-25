@@ -1,0 +1,26 @@
+{
+  "deepseek": {
+    "enabled": true,
+    "model": "deepseek-chat",
+    "base_url": "https://api.deepseek.com/v1",
+    "api_key_env": "DEEPSEEK_API_KEY"
+  },
+  "gemini": {
+    "enabled": true,
+    "model": "gemini-flash-lite-latest",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+    "api_key_env": "GEMINI_API_KEY"
+  },
+  "groq": {
+    "enabled": true,
+    "model": "openai/gpt-oss-120b",
+    "base_url": "https://api.groq.com/openai/v1",
+    "api_key_env": "GROQ_API_KEY"
+  },
+  "cerebras": {
+    "enabled": false,
+    "model": "gpt-oss-120b",
+    "base_url": "https://api.cerebras.ai/v1",
+    "api_key_env": "CEREBRAS_API_KEY"
+  }
+}

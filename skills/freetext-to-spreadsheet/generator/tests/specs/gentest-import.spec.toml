@@ -1,0 +1,73 @@
+# TEST spec: pattern import-trigger (Import tab + onChange processor), reference tab, DSL-only column.
+spec_version = 1
+
+[sheet]
+id = "gentest-import"
+title = "Gen test — Deliveries"
+description = "Deliveries to points (test sheet for the generator)"
+language = "fr"
+workbook = "registre-financier"
+mode = "create"
+layout = "table"
+
+[[columns]]
+key = "date"
+header = "Date"
+type = "date"
+required = true
+[[columns]]
+key = "point"
+header = "Point"
+type = "text"
+required = true
+[[columns]]
+key = "qty"
+header = "Quantité"
+type = "integer"
+min = 0
+[[columns]]
+key = "kind"
+header = "Type"
+type = "choice"
+choices = ["Gâteau", "Glace"]
+[[columns]]
+key = "notes"
+header = "Notes"
+type = "longtext"
+
+[[reference]]
+tab = "Points de dépôt / vente"
+key_column = "Nom"
+used_by = ["point"]
+
+[intake]
+pattern = "import-trigger"
+[intake.import]
+tab = "Import gentest"
+date_blocks = true
+dsl_columns = ["point", "qty", "kind", "notes"]
+dsl_extra_columns = [{ name = "Lieu", note = "used to find the point, not stored" }]
+default_rules = [{ column = "Type", rule = "Gâteau par défaut si le texte ne précise rien" }]
+
+[channels]
+skill = true
+appsheet = true
+
+[skill]
+name = "gentest-import-skill"
+triggers = ["j'ai livré", "livraison de test", "log this test delivery"]
+judgment = ["Ne jamais inventer un point ou une quantité"]
+
+[life]
+domain = "90-inbox"
+open_loop = "none"
+
+[appsheet]
+mode = "runbook"
+app = "Registre Financier — life/"
+views = ["form"]
+
+[safety]
+never_invent = true
+scratch_test = true
+keep_existing_layout = false
