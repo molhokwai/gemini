@@ -1,0 +1,63 @@
+# Example 1/3 — an EXISTING sheet, simplest pattern (direct append), adopted (verify only).
+# The real profile is profiles/taina_mood.py (hand-written parser); this spec is what the generator would need to know.
+spec_version = 1
+
+# Column list as an inline array: it must come BEFORE the first [table] (TOML would otherwise attach it to that table).
+# Equivalent spelling: one [[columns]] block per column.
+columns = [
+  { key = "date", header = "Date", type = "date", default = "today" },
+  { key = "logged_at", header = "Enregistré à", type = "datetime", default = "now" },
+  { key = "sleep_start", header = "Endormie (heure)", type = "time", llm = "time she fell asleep last night, HH:MM 24h" },
+  { key = "sleep_end", header = "Réveil (heure)", type = "time", llm = "time she woke up, HH:MM 24h" },
+  { key = "sleep_hours", header = "Heures de sommeil", type = "number", min = 0, max = 24 },
+  { key = "wake_energy", header = "Énergie au réveil", type = "choice", choices = ["Sluggish", "Normal", "Hyperactive"] },
+  { key = "low_start", header = "Épisode bas — début", type = "time" },
+  { key = "low_end", header = "Épisode bas — fin", type = "time" },
+  { key = "low_trigger", header = "Épisode bas — déclencheur", type = "longtext", width = 260, wrap = true },
+  { key = "low_behaviors", header = "Épisode bas — comportements", type = "longtext", width = 260, wrap = true },
+  { key = "high_start", header = "Épisode haut — début", type = "time" },
+  { key = "high_end", header = "Épisode haut — fin", type = "time" },
+  { key = "high_trigger", header = "Épisode haut — déclencheur", type = "longtext", width = 260, wrap = true },
+  { key = "high_behaviors", header = "Épisode haut — comportements", type = "longtext", width = 260, wrap = true },
+  { key = "irritability", header = "Irritabilité (1-5)", type = "integer", min = 1, max = 5 },
+  { key = "anxiety", header = "Anxiété (1-5)", type = "integer", min = 1, max = 5 },
+  { key = "focus", header = "Concentration (1-5)", type = "integer", min = 1, max = 5 },
+  { key = "notes", header = "Notes (médicaments, routine, plaintes physiques)", type = "longtext", width = 320, wrap = true },
+]
+
+[sheet]
+id          = "taina-mood"
+title       = "Suivi humeur Taïna"
+description = "Daily mood/sleep observations about Taïna, kept as a record for a child psychiatrist (not a diagnosis)"
+language    = "fr"
+workbook    = "registre-financier"
+mode        = "adopt"          # the tab exists: verify the header, never restructure
+layout      = "table"
+frozen_rows = 1
+# upsert_on omitted: several rows per day are normal (one row per episode)
+
+[intake]
+pattern = "direct"
+[intake.direct]
+parser = "hand"      # the numbered a)/b)/c) template parser is domain code: the generator only stubs it
+
+[channels]
+skill = true
+
+[skill]
+name     = "taina-bipolar-disorder-log"
+triggers = ["log Taïna's mood", "Taïna a pleuré", "note l'humeur de Taïna", "numbered answers 1. a) b) c)"]
+not_for  = "finances (use freetext-to-registre); this is an observation log, never a diagnostic tool"
+judgment = ["Never diagnose, interpret or advise; keep the caregiver's wording", "Never invent a time, rating or trigger the text does not state"]
+
+[life]
+domain    = "20-family/22-taina"
+open_loop = "daily"
+
+[appsheet]
+mode = "none"
+
+[safety]
+never_invent         = true
+scratch_test         = true
+keep_existing_layout = true

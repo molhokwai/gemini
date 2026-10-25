@@ -1,0 +1,84 @@
+# TEST spec (throwaway sheets only): pattern direct, upsert, formula column, several types.
+spec_version = 1
+
+[sheet]
+id = "gentest-direct"
+title = "Gen test — Household stock"
+description = "Household stock movements (test sheet for the generator)"
+language = "en"
+workbook = "registre-financier"
+mode = "create"
+layout = "table"
+upsert_on = ["date", "item"]
+
+[[columns]]
+key = "date"
+header = "Date"
+type = "date"
+required = true
+default = "today"
+[[columns]]
+key = "item"
+header = "Item"
+type = "text"
+required = true
+llm = "the product name"
+[[columns]]
+key = "qty"
+header = "Quantity"
+type = "integer"
+min = 0
+max = 1000
+[[columns]]
+key = "unit"
+header = "Unit"
+type = "choice"
+choices = ["kg", "litre", "piece"]
+[[columns]]
+key = "price"
+header = "Unit price"
+type = "number"
+min = 0
+[[columns]]
+key = "total"
+header = "Total"
+type = "formula"
+formula = '=IF(OR(C{row}="",E{row}=""),"",C{row}*E{row})'
+[[columns]]
+key = "share"
+header = "Share of budget"
+type = "percent"
+[[columns]]
+key = "bought"
+header = "Bought today"
+type = "boolean"
+[[columns]]
+key = "note"
+header = "Note"
+type = "longtext"
+
+[intake]
+pattern = "direct"
+[intake.direct]
+parser = "none"
+
+[channels]
+skill = true
+
+[skill]
+name = "gentest-direct-skill"
+triggers = ["log household stock", "add rice to the stock", "note the shopping"]
+not_for = "finances (use freetext-to-registre)"
+judgment = ["Never invent a quantity or a price"]
+
+[life]
+domain = "90-inbox"
+open_loop = "weekly"
+
+[appsheet]
+mode = "none"
+
+[safety]
+never_invent = true
+scratch_test = true
+keep_existing_layout = false
