@@ -5,6 +5,12 @@ description: Nkensa repo task & project-management workflow — pm/tasks referen
 
 # Nkensa repo — Dev Task & Project Management
 
+## Dual Global / Local Version Architecture
+- **Global Skill (`~/.gemini/skills/devtask-pm`)**: Universal PM workflows, git operations, and rollback safety protocols.
+- **Local Skill (`.gemini/skills/devtask-pm`)**: Repository-specific extension binding project management to project reference files and end-of-task documentation checks.
+
+
+
 The **non-visual** parts of the dev workflow for this repo: reference files, commit/push, rollback, and the register checkpoints. Adapted from the generic scaffold at `ai/claude/skills-pm-scaffold/skills/devtask-pm/SKILL.md` for this repo's actual shape: **solo, single-repo, GitHub-hosted, no required approver**.
 
 ## 0. Reuse-first

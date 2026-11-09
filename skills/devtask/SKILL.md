@@ -5,6 +5,12 @@ description: End-to-end orchestrator for a self-contained dev task in this repo 
 
 # Nkensa repo — Dev Task Orchestrator
 
+## Dual Global / Local Version Architecture
+- **Global Skill (`~/.gemini/skills/devtask`)**: Universal task sequencing engine, phase definitions, and execution lifecycle rules.
+- **Local Skill (`.gemini/skills/devtask`)**: Repository-specific extension that maps the global engine to project-specific paths, core reference documents, and pre-flight/post-task checkpoints.
+
+
+
 The **conductor** for a complete development task in this repo. Doesn't re-implement git or the reference-file protocol — sequences them and delegates:
 
 | Concern | Owned by | Invoked at |
